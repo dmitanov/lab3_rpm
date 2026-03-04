@@ -9,4 +9,11 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Creators\**" />
+    <EmbeddedResource Remove="Creators\**" />
+    <None Remove="Creators\**" />
+    <Page Remove="Creators\**" />
+  </ItemGroup>
+
 </Project>

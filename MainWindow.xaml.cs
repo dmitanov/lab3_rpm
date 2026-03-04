@@ -1,4 +1,5 @@
-﻿using lab3_rpm.Creators;
+﻿
+using lab3_rpm.Factories;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +15,8 @@ namespace lab3_rpm
 {
     public partial class MainWindow : Window
     {
+        private IFigureFactory currentFactory;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -26,37 +29,27 @@ namespace lab3_rpm
 
             FiguresPanel.Children.Clear();
 
-            CircleCreator circleCreator;
-            SquareCreator squareCreator;
-            TriangleCreator triangleCreator;
-
             switch (selectedItem.Content.ToString())
             {
                 case "Красный":
-                    circleCreator = new RedCircleCreator();
-                    squareCreator = new RedSquareCreator();
-                    triangleCreator = new RedTriangleCreator();
+                    currentFactory = new RedFactory();
                     break;
 
                 case "Синий":
-                    circleCreator = new BlueCircleCreator();
-                    squareCreator = new BlueSquareCreator();
-                    triangleCreator = new BlueTriangleCreator();
+                    currentFactory = new BlueFactory();
                     break;
 
                 case "Зелёный":
-                    circleCreator = new GreenCircleCreator();
-                    squareCreator = new GreenSquareCreator();
-                    triangleCreator = new GreenTriangleCreator();
+                    currentFactory = new GreenFactory();
                     break;
 
                 default:
                     return;
             }
 
-            FiguresPanel.Children.Add(circleCreator.Create().CreateUIElement());
-            FiguresPanel.Children.Add(squareCreator.Create().CreateUIElement());
-            FiguresPanel.Children.Add(triangleCreator.Create().CreateUIElement());
+            FiguresPanel.Children.Add(currentFactory.CreateCircle().CreateUIElement());
+            FiguresPanel.Children.Add(currentFactory.CreateSquare().CreateUIElement());
+            FiguresPanel.Children.Add(currentFactory.CreateTriangle().CreateUIElement());
         }
     }
 }
