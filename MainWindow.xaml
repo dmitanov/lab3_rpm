@@ -1,0 +1,20 @@
+﻿<Window x:Class="lab3_rpm.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab3_rpm"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <ComboBox Name="ColorComboBox"
+                  Margin="10"
+                  SelectionChanged="ColorComboBox_SelectionChanged">
+            <ComboBoxItem Content="Красный"/>
+            <ComboBoxItem Content="Синий"/>
+            <ComboBoxItem Content="Зелёный"/>
+        </ComboBox>
+
+        <WrapPanel x:Name="FiguresPanel"/>
+    </StackPanel>
+</Window>
